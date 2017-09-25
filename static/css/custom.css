@@ -1,0 +1,11 @@
+/*  body{
+	padding-top:  70px;
+	padding-bottom: 20px
+}  */
+.thumbnail {
+border:0;
+}
+
+.bold {font-weight: bold; }
+.red { color: #FF0000; }
+
