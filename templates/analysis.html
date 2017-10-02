@@ -21,7 +21,7 @@
   <body>
     
 	<!-- Navigation bar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
 	    <div class="container">
 		   <button type="button" class="navbar-toggle"
 		   data-toggle="collapse"
@@ -37,8 +37,8 @@
 		   <div class="navbar-collapse collapse">
 		      <ul class="nav navbar-nav navbar-right">
 			    <li><a href="{{url_for('main')}}">Home</a></li>
-				<li class="active"><a href="{{url_for('analysis')}}">Analysis</a></li>
-                <li><a href="{{url_for('algorithm')}}">Algorithm</a></li>
+				<li class="active"><a href="{{url_for('analysis')}}">Police Deployment</a></li>
+                <li><a href="{{url_for('algorithm')}}">City Planning</a></li>
                 <li><a href=" {{ url_for('predictor') }} ">Predictor</a></li>
                 <li><a href="{{ url_for('aboutme') }}">About me</a></li>				
 			  </ul>
@@ -50,150 +50,94 @@
 	
 	<!-- Multicolumn Layout and Buttons -->
 	<div class="container">
-	    <div class="page-header">
-		    <h1>Data Source</h1>
-		</div>
-		<div class="row">
+	    		
+	     <div class="page-header">
+		  <h1>Exploratory Analysis --- Identify Strong Attributes</h1>
+             </div>
+
+	     <div class="row">
 				    
-			<h3>Camera-recorded traffic violation data</h3>
-		    <p> Thanks to the vast data from the city of Chicago. Both red light violations and speeding daily violations data for the time period
-                    July 2014 - Aug 2017 can be found online.
-				<button type=button class="btn btn-default" onclick="location.href = 'https://data.cityofchicago.org/';">Link</button>	
-			</p>
-            <h3>Motor vehcile crash data</h3>
-            <p>     The Illinoise Deparment of Transportation's Division of Traffic Safety just released their records on crash accidents happedn in 2015. The data was posted in April, 2017.
-                 <button type=button class="btn btn-default" onclick="location.href = 'https://github.com/stevevance/Chicago-Crash-Browser/blob/master/DATA.md';">Link</button>
-			</p>
-	        <h3>Weather data</h3>
-		    <p> The climate of Chicago is classified as humid continental, with all four seasons distinctly represented: wet, cool springs; 
-			    somewhat hot, and often humid, summers; pleasantly mild autumns; and cold winters. Annual precipitation in Chicago is average, 
-				and reaches its lowest points in the months of January and February, and peaks in the months of May and June. Rich historical 
-				weather data can be found on the website of National Centers for Environmental Information.
-				<button type=button class="btn btn-default" onclick="location.href = 'https://www.ncei.noaa.gov/';">Link</button>                                	
-			</p>	
-		</div>
-		
-		<div class="page-header">
-		    <h1>Data Cleaning</h1>
-		</div>
-		<div class="row">
-			<h3>Geocode</h3>
-		    <p> Although the address of each camera is provided, the information on corresponding latitude and longtitude is missing. The Google 
-			    Map Geocoding API was applied to collect such information for better geographic mapping visulization.					
-			</p>
-		</div>
-		
-		<div class="page-header">
-		    <h1>Exploratory Analysis --- Identify Strong Attributes</h1>
-		</div>
-		<div class="row">
-				    
-			<h3>Temperature</h3>
-		    <p> Every 1F temperature increase brings up the total number of red light and speeding violations by 8 and 7, respectively. Putting these numbers into context: 
+		  <h3>Temperature</h3>
+		  <p style="font-size:16px"> Every 1F temperature increase brings up the total number of red light and speeding violations by 8 and 7, respectively. Putting these numbers into context: 
 			if we approximate the temperature change from day to day is around 10 - 20 F. The total number for red light and speeding violations could change 
             by 100 - 200. It is roughly 2% - 3% change, comparing with the average number of daily violations.			
-			</p>
-			<div class="row">
-			    <div class="col-md-6">
-
-			     <iframe
-                            style="border: 0px;"
-                            src="https://public.tableau.com/views/redlight/Dashboard1?:embed=y&amp;:from_wg=true" 
-                            scrolling="no"
-                            width="630px"
-                            height="756px">
-                        </iframe>  
-
-
-
-                </div>
-				<div class="col-md-6">
-				<iframe
-                            style="border: 0px;"
-                            src="https://public.tableau.com/views/Speed_1_0/Dashboard1?:embed=y&amp;:from_wg=true" 
-                            scrolling="no"
-                            width="630px"
-                            height="756px">
-                        </iframe>
-				</div>
-			</div> 
+		  </p>
+		  <div class="row">
+		       <div class="col-md-6">
+			    <div class='tableauPlaceholder' id='viz1506799366643' style='width: 100%; height:300px;'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;re&#47;redlight&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='100%' height='300'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='2' /> <param name='site_root' value='' /><param name='name' value='redlight&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;re&#47;redlight&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1506799366643');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='620px';vizElement.style.maxHeight='920px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script> 
+                       </div>	
+                       <div class="col-md-6">
+			    <div class='tableauPlaceholder' id='viz1506799837385' style='width: 100%; height:300px;'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;Speed_1_0&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='100%' height='300'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='2' /> <param name='site_root' value='' /><param name='name' value='Speed_1_0&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;Speed_1_0&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1506799837385');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='620px';vizElement.style.maxHeight='920px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+		       </div>
+		  </div> 
 
 	          
 				    
-			<h3>Precipitation</h3>
-		    <p> The precipitation reported here is defined as the sum of rain and melted snow/ice. Every 1 inch precipitation increase brings down the total number
+		  <h3>Precipitation</h3>
+		  <p style="font-size:16px"> The precipitation reported here is defined as the sum of rain and melted snow/ice. Every 1 inch precipitation increase brings down the total number
                 of red light and speeding violations by 70 and 750, respectively. The speeding violation dependence on precipitation is about 5 - 6 times stronger 
                 than the one for the red light violations. If a heavy rain brings 1 inch of precipitation, it decreases the speeding and red light violations by 25% 
                 and 5%, compared with days with no precipitation.				
-			</p>
-			<div class="row">
-			    <div class="col-md-6">
-
-                            <iframe
-                            style="border: 0px;"
-                            src="https://public.tableau.com/views/redlight_2/Dashboard2?:embed=y&amp;:from_wg=true" 
-                            scrolling="no"
-                            width="630px"
-                            height="756px">
-                        </iframe>
-
-
-                </div>
-				<div class="col-md-6">
-                    <iframe
-                            style="border: 0px;"
-                            src="https://public.tableau.com/views/Speed_2_0/Dashboard2?:embed=y&amp;:from_wg=true" 
-                            scrolling="no"
-                            width="630px"
-                            height="756px">
-                        </iframe>
-				</div>
-			</div> 
+		  </p>
+		  <div class="row">
+		       <div class="col-md-6">
+                            <div class='tableauPlaceholder' id='viz1506800010285' style='width: 100%; height:300px;'><noscript><a href='#'><img alt='Dashboard 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;re&#47;redlight_2&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='100%' height='300'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='2' /> <param name='site_root' value='' /><param name='name' value='redlight_2&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;re&#47;redlight_2&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1506800010285');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='620px';vizElement.style.maxHeight='920px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                       </div>
+		       <div class="col-md-6">
+                            <div class='tableauPlaceholder' id='viz1506800038875' style='width: 100%; height:300px;'><noscript><a href='#'><img alt='Dashboard 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;Speed_2_0&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='100%' height='300'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='2' /> <param name='site_root' value='' /><param name='name' value='Speed_2_0&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;Speed_2_0&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1506800038875');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='620px';vizElement.style.maxHeight='920px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+		       </div>
+		  </div> 
 
 				    
-			<h3>Weekday</h3>
-		    <p> <span class="bold red">Fun facts: </span> Red light data: people more careless on Saturdays, and more carefull on Mondays. Speeding data: people with bad 
+		  <h3>Weekday</h3>
+		  <p style="font-size:16px"> <span class="bold red">Fun facts </span> Red light data: people are more careless on Saturdays, and more carefull on Mondays. Speeding data: people with bad 
             adventure habit are more excited on Fridays and less excited on Sundays. The weekday dependence is stronger for red light violations (Sat violations are 27% more
 			than Mon violations), and weaker for speeding violations (Fri violations are 15% more than Sun violations).			
-			</p>
-			<div class="row">
-			    <div class="col-md-6">
-				    <iframe
-                            style="border: 0px;"
-                            src="https://public.tableau.com/views/redlight_3/Dashboard3?:embed=y&amp;:from_wg=true" 
-                            scrolling="no"
-                            width="630px"
-                            height="756px">
-                        </iframe>
-                </div>
-				<div class="col-md-6">
-				    <iframe
-                            style="border: 0px;"
-                            src="https://public.tableau.com/views/Speed_3/Dashboard3?:embed=y&amp;:from_wg=true" 
-                            scrolling="no"
-                            width="630px"
-                            height="756px">
-                        </iframe>
-				</div>
-			</div> 
+		  </p>
+		  <div class="row">
+		       <div class="col-md-6">
+		            <div class='tableauPlaceholder' id='viz1506800196444' style='width: 100%; height:300px;'><noscript><a href='#'><img alt='Dashboard 3 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;re&#47;redlight_3&#47;Dashboard3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='100%' height='300'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='2' /> <param name='site_root' value='' /><param name='name' value='redlight_3&#47;Dashboard3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;re&#47;redlight_3&#47;Dashboard3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1506800196444');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='620px';vizElement.style.maxHeight='920px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                       </div>
+		       <div class="col-md-6">
+		            <div class='tableauPlaceholder' id='viz1506800221795' style='width: 100%; height:300px;'><noscript><a href='#'><img alt='Dashboard 3 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;Speed_3&#47;Dashboard3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='100%' height='300'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='2' /> <param name='site_root' value='' /><param name='name' value='Speed_3&#47;Dashboard3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;Speed_3&#47;Dashboard3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1506800221795');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='620px';vizElement.style.maxHeight='920px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+		       </div>
+		  </div> 
 
 		
-		<h3>Location</h3>
-		<p> The <span class="bold red">location </span>of cameras appears to be a <span class="bold red">strong feature </span>determining the number of violations.</p>
-		<div class='tableauPlaceholder' id='viz1505404221402' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;lo&#47;location_violation&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='location_violation&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;lo&#47;location_violation&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1505404221402');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1124px';vizElement.style.height='929px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>	
-               
-				
-			
-	    </div>	
-                 
+	   	  <h3>Location</h3>
+		  <p style="font-size:16px"> The location of cameras appears to be a strong feature determining the number of violations. The crash rate varies heavily from one location to another. </p>
+		  <div class='tableauPlaceholder' id='viz1505404221402' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;lo&#47;location_violation&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='location_violation&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;lo&#47;location_violation&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1505404221402');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1124px';vizElement.style.height='929px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>	
+	          </div>	
+             
+            <div class="page-header">
+		<h1>Machine learning</h1>
+	    </div>
+            <div class="row">				    
+	        <h3>Input Features</h3>
+                <p style="font-size:16px"> For each location, the average number of daily violations over all historical data contained in the training set was included as an feature. Additionally, I also used daily-weather-related features, including highest temperature, lowest temperature, rain/snow precipitation, accumulated snow depth on the ground.   			
+	        </p>
+	        <h3>Model Selection </h3>
+                <p style="font-size:16px"> Since the location attribute appears strongly influencing the output, I use the mean model results as the benchmark. I applied various models, including linear regression, k-nearest neighbor, and random forests. In general, RF method performs better in terms of forecasting violation risks. 			
+	        </p>	
+                <h3> Accuracy </h3>
+                <p style="font-size:16px"> The data set is split into the training and test data sets, which contain 80% and 20% of the whole data. I applied cross validation to measure the prediction error. Comparing with the mean model, The mean-squared-error (MSE) values of the random forest method are 89% and 85% for red light and speeding violations, respectively.  
+                </p>
+                <h3> Web App </h3>
+                <p style="font-size:16px"> An interactive web app can be found on the <span class="bold red">Predictor</span> tab. Top ten violation locations for both red light and speeding are predicted based on the input weather condition.  
+                </p>	
+	    </div>
+
+
+
+    
 	</div>	
 		
-    <div class="col-xs-12" style="height:150px;"></div>
+        <div class="col-xs-12" style="height:150px;"></div>
 
 	<!--Fixed footer -->
 	<div class="navbar navbar-default navbar-fixed-bottom">
 	    <div class="container-fluid">
-		    <div class="navbar-text pull-left">
+		<div class="navbar-text pull-left">
 		       <p>Copyright QiDataGroup 2017</p>
 		</div>
 	</div>	

@@ -37,7 +37,7 @@
 		   <div class="navbar-collapse collapse">
       		      <ul class="nav navbar-nav navbar-right">
                             <li class="active"><a href="{{ url_for('main') }}">Home</a></li>
-				<li><a href=" {{ url_for('analysis') }} ">Analysis</a></li>
+				<li><a href=" {{ url_for('analysis') }} ">Police Deployment</a></li>
 				<!--
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Team <b class="caret"></b></a>
@@ -53,7 +53,7 @@
 				</li>
 				-->
 				
-                <li><a href=" {{ url_for('algorithm') }} ">Algorithm</a></li>
+                <li><a href=" {{ url_for('algorithm') }} ">City Planning</a></li>
                 <li><a href=" {{ url_for('predictor') }} ">Predictor</a></li>
                 <li><a href="{{ url_for('aboutme') }}">About me</a></li>				
 			  </ul>
@@ -67,7 +67,7 @@
 		    <a href="#" class="thumbnail">
 		        <img src="/static/img/chicago_front.gif" alt="Chicago traffic picture">
 		    </a>
-	        <h1>Improving Road Safety Using Camera Violation and Crash Data for the city of Chicago</h1>
+	        <h1>Improving Road Safety Using Camera Violation and Crash Data</h1>
 			<p>		   
             </p>
 		</div>
@@ -77,32 +77,89 @@
 	<!-- Multicolumn Layout and Buttons -->
 	<div class="container">
 	    <div class="page-header">
-		    <h1>Project Goals</h1>
+		    <h1>Motivation</h1>
 		</div>
 		<div class="row">
 		
-		    <div class="col-md-6">
-			<h3>Efficient Police Deployment</h3>
-		        <!--<p> <span class="bold red">This is a piece of news from the future:</span> Tingting presents Week3 complete project demo! </p>-->
-	                <p> Traffic rule enforcement is one of the core duties of the Police Department. However, the police resource is limited, how to make efficient deployment while maximizing road safety is a key question. This project provide a tool to predict locations throughout the city where traffic violations could be potentially high in the near future. By placing police officers at these selected locations, we hope to achieve: <br><br> a) Promote the change to a good-driving behavior <br> b) Discover underlying reason for the violation, which cameras could not provide <br> c) Avoid the waiting period of a mailed ticket, so that traffic rule offenders will not forget the cause of their violations</p>
-			</div>
+		         
 			
-			<div class="col-md-6">
-			    <h3>Data-driven City Planning</h3>
-		        <p>Cameras are usually installed by the Department of City Planning. Installation at a major intersection or on a busy street is a common choice. How to smartly select a camera installation site is difficult to achieve. <br><br> By combing the crash record together with the information of current camera sites, we propose to use a data-driven approach to suggest next camera installation areas and evaluate the impact of some newly installed speeding camera on the number of crashes in the neighborhood.   </p>
-			</div>
+                        <div class="col-md-8">
+                        <h3>Police Deployment</h3>
+                        <br>
+		        <!--<p> <span class="bold red">This is a piece of news from the future:</span> Tingting presents Week3 complete project demo! </p>-->
+	                <p style="font-size:16px"> Traffic rule enforcement is one of core duties of the Police Department. However, the police resource is limited, how to make efficient deployment to improve road safety is a key question. This project provide a tool to forecast violation risks at various locations throughout the city. By placing police officers at selected locations associated with higher violation risk, it is expected to promote the change to a good-driving behavior, to discover underlying reason for the violation, and to avoid the waiting period of a mailed ticket.</p>
+	                </div>
+                        <div class="col-md-4">
+                           <a href="#" class="thumbnail">
+		              <img src="/static/img/policeman.jpg" alt="police" height="240" width="120" >
+		           </a>
+                        </div>			
+
+			<br>
+			
+                        <div class="col-md-8">
+			<h3>City Planning</h3>
+                        <br>
+		        <p style="font-size:16px">Cameras are usually installed by the Department of City Planning. Installation at a major intersection or on a busy street is a common choice. How to smartly select a camera installation site is difficult to achieve. By combing the crash record together with the information of current camera sites, I derived a data-driven approach to suggest next camera installation sites and evaluate impacts of newly installed cameras on crash risks.   </p>
+		        </div>
+                        <div class="col-md-4">
+                           <a href="#" class="thumbnail">
+		              <img src="/static/img/city_worker.png" alt="city_worker" height="300" width="150">
+		           </a>
+                        </div>
 			
 			
 		</div>
 		
 		
 	</div>	
+	
+        <div class="container">
+	    <div class="page-header">
+		  <h1>Data Source</h1>
+	    </div>
 		
+            <div class="row">	    
+	         <h3>Camera-recorded Traffic Violation Data</h3>
+		 <p style="font-size:16px"> Thanks to the vast data from the city of Chicago. Both red light violations and speeding daily violations data for the time period
+                    July 2014 - Aug 2017 can be found online.
+				<button type=button class="btn btn-default" onclick="location.href = 'https://data.cityofchicago.org/';">Link</button>	
+	         </p>
+                 <h3>Motor Vehcile Crash Data</h3>
+                 <p style="font-size:16px">     The Illinoise Deparment of Transportation's Division of Traffic Safety just released their records on crash accidents happedn in 2015. The data was posted in April, 2017.
+                 <button type=button class="btn btn-default" onclick="location.href = 'https://github.com/stevevance/Chicago-Crash-Browser/blob/master/DATA.md';">Link</button>
+	         </p>
+	         <h3>Weather Data</h3>
+		 <p style="font-size:16px"> The climate of Chicago is classified as humid continental, with all four seasons distinctly represented: wet, cool springs; 
+			    somewhat hot, and often humid, summers; pleasantly mild autumns; and cold winters. Annual precipitation in Chicago is average, 
+				and reaches its lowest points in the months of January and February, and peaks in the months of May and June. Rich historical 
+				weather data can be found on the website of National Centers for Environmental Information.
+				<button type=button class="btn btn-default" onclick="location.href = 'https://www.ncei.noaa.gov/';">Link</button>                                	
+	         </p>	
+	    </div>
+		
+            <div class="page-header">
+		 <h1>Data Cleaning</h1>
+	    </div>
+		
+            <div class="row">
+		<h3>Geocode</h3>
+		<p style="font-size:16px"> Although the address of each camera is provided, the information on corresponding latitude and longtitude is missing. The Google 
+			    Map Geocoding API was applied to collect such information for better geographic mapping visulization.					
+	        </p>
+	    </div>
+        </div>
+	
         
         <div class="container">
-          <h1>Presentation Slides</h1>
-         <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTJN8SrGOE_qNJLCY04tvownWYPGvY6Y51vRbaY2zrZWXvRJJMxEE1JdJBx5jrKtMsj9ZIkzfynbrRP/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+	    <div class="page-header">
+               <h1>Presentation Slides</h1>
+            </div>
+                 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTJN8SrGOE_qNJLCY04tvownWYPGvY6Y51vRbaY2zrZWXvRJJMxEE1JdJBx5jrKtMsj9ZIkzfynbrRP/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
         </div>
+
+
+        
 		
 
 	

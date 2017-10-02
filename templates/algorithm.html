@@ -21,7 +21,7 @@
   <body>
     
 	<!-- Navigation bar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
 	    <div class="container">
 		   <button type="button" class="navbar-toggle"
 		   data-toggle="collapse"
@@ -37,8 +37,8 @@
 		   <div class="navbar-collapse collapse">
 		      <ul class="nav navbar-nav navbar-right">
 			    <li><a href="{{url_for('main')}} ">Home</a></li>
-				<li><a href="{{url_for('analysis')}} ">Analysis</a></li>
-                <li class="active"><a href="{{url_for('algorithm')}} ">Algorithm</a></li>
+				<li><a href="{{url_for('analysis')}} ">Police Deployment</a></li>
+                <li class="active"><a href="{{url_for('algorithm')}} ">City Planning</a></li>
                 <li><a href=" {{ url_for('predictor') }} ">Predictor</a></li>
                 <li><a href="{{ url_for('aboutme') }}">About me</a></li>				
 			  </ul>
@@ -51,57 +51,74 @@
 	
 	<!-- Multicolumn Layout and Buttons -->
 	<div class="container">
+
 	    <div class="page-header">
-		    <h1>Tool</h1>
-		</div>
-		<div class="row">
-				    
-			<h3>Scikit-learn: machine learning in Python
-			<img src="/static/img/scikit_logo.png" alt="the scikit logo" height="80">
-			</h3>
+		<h1>Identify Under-performing Cameras</h1>
+	    </div>
+	    <div class="row">	
 
-		       <h3> Tableau: interactive data visulization
-                       <img src="/static/img/tableau_logo.jpg" alt="the tableau logo" height="60">
-		       </h3>	
+              <div class="col-md-7">	    
+		<h3>Establish Camera-monitoring Area</h3>
+                <p style="font-size:16px"> Each crash event can be assigned to a closest camera, based on the geographical distance. By performing this procedure for each crash, I established a monitoring area for every camera. For a certain time period, I have the information on number of violations recorded by a certain camera, and the number of crashes happened in its monitoring area.    			
+	        </p>
+                <br>
+		<h3> Mark High-risk Areas</h3>	
+                <p style="font-size:16px"> The ratio of crash counts vs. violation counts was calculated for each camera. High-risk areas were defined as monitoring areas with under-performing cameras, that show a relatively high ratio. 			
+	        </p>
+                <br>
+                <h3> Install New Cameras</h3>	
+                <p style="font-size:16px"> Camera relocation are/or new camera installation are recommended for high-risk areas. Within the monitoring area of each under-performing camera, the new camera should be located at centroids of crash events. It appears like a common clustering problem. A general k-means algorithm should be sufficient to find new-camera installation sites. However, crashes only occur along streets, k-means sometimes locate centroids off-street. To solve this problem, a "smarter" clustering method should be applied. <br><br>
+                <span class="bold red">HDBSCAN</span> is a clustering method dealing with spatially highly skewed data. It could potentially recognize crashes along the same street a cluster. By combining main street information from shape files, I can compute a crash center for each street segment. 
+			
+	        </p>
+                <br>
+                
 
-		       <h3> Flask: micro web framework written in Python
-                       <img src="/static/img/flask_logo.png" alt="the flask logo" height="60">
-                       </h3>   	
-		</div>
+	      </div>	 	
+
+              <div class="col-md-5">
+                <a href="#" class="thumbnail">
+		    <img src="/static/img/under_perform.png" alt="under_perform" height="800" width="600">
+		</a>
+              </div>
+
+
+	    </div>
 		
-
-		
-		<div class="page-header">
-		    <h1>Machine learning
-			
-			</h1>
-		</div>
-		<div class="row">
-				    
-			<h3>Input Features</h3>
-		    <p> For each location, the average number of daily violations over all historical data contained in the training set was included as an feature. Additionally, I also used daily-weather-related features, including highest temperature, lowest temperature, rain/snow precipitation, accumulated snow depth on the ground.   			
-			</p>
-			
-
-			<h3>Model: Random Forests </h3>
-		    <p> Since the location attribute appears strongly influencing the output, I use the mean model results as the benchmark. Then I applied the random forest regressor, which represents an ensemble method for regression machine learning problems. The method generally improves the performance of the prediction.			
-			</p>
-			
-			<h3>Cross validation </h3>
-		    <p> The data set is split into the training and test data sets, which contain 80% and 20% of the whole data. I applied cross validation to measure the prediction error. 	
-			</p>
-		        <h3> Accuracy </h3>
-                    <p> Comparing with the mean model, The mean-squared-error (MSE) values of the random forest method are 89% and 85% for red light and speeding violations, respectively.  
-			
-		</div>
-
-		
-
-		
-
-		
-			
-			
+            <div class="row">
+              <div class="col-md-6">
+                 <div class='tableauPlaceholder' id='viz1506815158010' style='width: 100%; height:300px;'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;hi&#47;high_risk_1&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  width='100%' height='300'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='2' /> <param name='site_root' value='' /><param name='name' value='high_risk_1&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;hi&#47;high_risk_1&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1506815158010');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='620px';vizElement.style.maxHeight='920px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+              </div>
+              <div class="col-md-6">
+                 <div class='tableauPlaceholder' id='viz1506815181165' style='width: 100%; height:300px;'><noscript><a href='#'><img alt='Dashboard 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;hi&#47;high_risk_2&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  width='100%' height='300'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='2' /> <param name='site_root' value='' /><param name='name' value='high_risk_2&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;hi&#47;high_risk_2&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1506815181165');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='620px';vizElement.style.maxHeight='920px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script> 
+              </div>
+            </div>
+	
+            <br>
+            <br>
+            <br>
+            
+	    
+	    <div class="page-header">
+		<h1>Evaluate New-camera Effects</h1>
+	    </div>
+            <div class="row">				    
+	        <h3>Estimate Installation Date</h3>
+                <p> To estimate the new camera effect on reducing crash rate, I compared crash counts before and after the new camera installation. The installation date was not given in my data set, but I can estimate it from day 1 of the violation report for each camera.   			
+	        </p>
+	        <h3>Compare with City Average </h3>
+                <p> The comparison of before- and after-crash counts need to be put in a context. In other words, we need to evalute crash risk comparing to the city average. I normalized the crash risk of new-camera areas, assuming the city average to be 1. <br><br>
+In February 2015, there are three new speed cameras installed in the city of Chicago. A significant 30% crash risk reduction was observed within the first week after the camera installation. And the reduced crash risk remained the same low last for at least seven weeks.
+                What does it mean by 30% crash risk reduction? In 2015, there are 21667 injuried and 119 fatalities. <span class="bold red">A 30% crash risk reduction means 6500 less injuried and 36 survived.</span> It is quite significant. 
+	        </p>
+                <br>
+                <br>
+                <br>	
+ 	
+	    </div>
+	
+            <div class='tableauPlaceholder' id='viz1506818547182' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;cr&#47;crash_risk&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='2' /> <param name='site_root' value='' /><param name='name' value='crash_risk&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;cr&#47;crash_risk&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1506818547182');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='620px';vizElement.style.maxHeight='920px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>		
+	
 	</div>	
 		
 		
